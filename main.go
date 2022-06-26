@@ -1,9 +1,20 @@
 package main
 
-import "fmt"
+import (
+	"flag"
+	"fmt"
+)
 
 var GitCommit string
 
 func main() {
-	fmt.Printf("Hello World. Version: %s\n", GitCommit)
+	var version bool
+	flag.BoolVar(&version, "version", false, "Print the version")
+	flag.Parse()
+
+	if version {
+		fmt.Printf("Version: %s\n", GitCommit)
+	}
+
+	fmt.Println("Hello World.")
 }
